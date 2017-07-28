@@ -28,9 +28,7 @@ class SearchPage extends Component {
     this.setState({ query: '' })
   }
   render() {
-    const { books } = this.props
     const { query, library } = this.state
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
