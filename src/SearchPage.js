@@ -17,8 +17,8 @@ class SearchPage extends Component {
   }
   handleSubmit = event => {
     event.preventDefault()
-    BooksAPI.search(this.state.query, 20).then(books => {
-      this.setState({ library: books })
+    BooksAPI.search(this.state.query, 20).then(libraryBooks => {
+      this.setState({ library: libraryBooks })
     })
   }
   updateQuery = query => {

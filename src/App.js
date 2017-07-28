@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
@@ -39,6 +40,7 @@ class BooksApp extends React.Component {
           path="/search"
           render={({ history }) =>
             <SearchPage
+              books={this.state.books}
               onChangeShelf={(value, book) => {
                 this.changeShelf(value, book)
                 history.push('/')

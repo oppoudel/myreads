@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class ListBooks extends Component {
-  handleChange = (e, book) => {
-    const shelf = e.target.value
+  handleChange = (event, book) => {
+    const shelf = event.target.value
     if (this.props.onChangeShelf) {
       this.props.onChangeShelf(book, shelf)
     }
@@ -21,8 +21,8 @@ class ListBooks extends Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {books.filter(book => book.shelf === 'currentlyReading').map(b =>
-                    <li key={b.id}>
+                  {books.filter(b => b.shelf === 'currentlyReading').map(book =>
+                    <li key={book.id}>
                       <div className="book">
                         <div className="book-top">
                           <div
@@ -30,14 +30,14 @@ class ListBooks extends Component {
                             style={{
                               width: 128,
                               height: 193,
-                              backgroundImage: `url(${b.imageLinks.thumbnail})`
+                              backgroundImage: `url(${book.imageLinks.thumbnail})`
                             }}
                           />
                           <div className="book-shelf-changer">
                             <select
-                              value={b.shelf}
-                              onChange={e => {
-                                this.handleChange(e, b)
+                              value={book.shelf}
+                              onChange={event => {
+                                this.handleChange(event, book)
                               }}
                             >
                               <option value="none" disabled>
@@ -51,10 +51,10 @@ class ListBooks extends Component {
                           </div>
                         </div>
                         <div className="book-title">
-                          {b.title}
+                          {book.title}
                         </div>
                         <div className="book-authors">
-                          {b.authors.join(', ')}
+                          {book.authors.join(', ')}
                         </div>
                       </div>
                     </li>
@@ -66,8 +66,8 @@ class ListBooks extends Component {
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {books.filter(book => book.shelf === 'wantToRead').map(b =>
-                    <li key={b.id}>
+                  {books.filter(b => b.shelf === 'wantToRead').map(book =>
+                    <li key={book.id}>
                       <div className="book">
                         <div className="book-top">
                           <div
@@ -75,14 +75,14 @@ class ListBooks extends Component {
                             style={{
                               width: 128,
                               height: 193,
-                              backgroundImage: `url(${b.imageLinks.thumbnail})`
+                              backgroundImage: `url(${book.imageLinks.thumbnail})`
                             }}
                           />
                           <div className="book-shelf-changer">
                             <select
-                              value={b.shelf}
-                              onChange={e => {
-                                this.handleChange(e, b)
+                              value={book.shelf}
+                              onChange={event => {
+                                this.handleChange(event, book)
                               }}
                             >
                               <option value="none" disabled>
@@ -96,10 +96,10 @@ class ListBooks extends Component {
                           </div>
                         </div>
                         <div className="book-title">
-                          {b.title}
+                          {book.title}
                         </div>
                         <div className="book-authors">
-                          {b.authors.join(', ')}
+                          {book.authors.join(', ')}
                         </div>
                       </div>
                     </li>
@@ -111,8 +111,8 @@ class ListBooks extends Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {books.filter(book => book.shelf === 'read').map(b =>
-                    <li key={b.id}>
+                  {books.filter(b => b.shelf === 'read').map(book =>
+                    <li key={book.id}>
                       <div className="book">
                         <div className="book-top">
                           <div
@@ -120,14 +120,14 @@ class ListBooks extends Component {
                             style={{
                               width: 128,
                               height: 193,
-                              backgroundImage: `url(${b.imageLinks.thumbnail})`
+                              backgroundImage: `url(${book.imageLinks.thumbnail})`
                             }}
                           />
                           <div className="book-shelf-changer">
                             <select
-                              value={b.shelf}
-                              onChange={e => {
-                                this.handleChange(e, b)
+                              value={book.shelf}
+                              onChange={event => {
+                                this.handleChange(event, book)
                               }}
                             >
                               <option value="none" disabled>
@@ -141,10 +141,10 @@ class ListBooks extends Component {
                           </div>
                         </div>
                         <div className="book-title">
-                          {b.title}
+                          {book.title}
                         </div>
                         <div className="book-authors">
-                          {b.authors.join(', ')}
+                          {book.authors.join(', ')}
                         </div>
                       </div>
                     </li>
