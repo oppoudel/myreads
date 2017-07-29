@@ -17,8 +17,26 @@ class SearchPage extends Component {
   }
   handleSubmit = event => {
     event.preventDefault()
+    const {books} = this.props
     BooksAPI.search(this.state.query, 20).then(libraryBooks => {
-      this.setState({ library: libraryBooks })
+      const originalBookIds = books.map(book => book.id)
+      const libraryBookIds = libraryBooks.map(book => book.id)
+      let commonBookIds = [], newBookIds = [], commonBooks = [], newBooks = []
+      for (let i = 0; i < libraryBookIds.length; i++) {
+        let item = libraryBookIds[i]
+        if(originalBookIds.includes(item)){
+          commonBookIds.push(item)
+        }else{
+          newBookIds.push(item)
+        } 
+      }
+      commonBookIds.forEach(id =>{
+        commonBooks.push(books.find((book) => book.id === id))
+      })
+      newBookIds.forEach(id => {
+        newBooks.push(libraryBooks.find((book)=> book.id === id))
+      })
+      this.setState({ library: newBooks.concat(commonBooks)})
     })
   }
   updateQuery = query => {
